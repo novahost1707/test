@@ -1,13 +1,999 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Meine Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Immanuel Fellowship | Glauben. Kraft. Erweckung.</title>
+
+<meta name="description" content="Immanuel Fellowship – Eine lebendige, charismatische Gemeinde voller Leidenschaft für Jesus, Erweckung, Gemeinschaft und geistliche Kraft.">
+
+<style>
+
+/* =====================================================
+   ROOT VARIABLES
+===================================================== */
+
+:root{
+    --black:#0A0A0A;
+    --black-2:#111111;
+    --black-3:#151515;
+
+    --orange:#FF6A00;
+    --orange-light:#FF8C00;
+
+    --white:#ffffff;
+    --gray:#B5B5B5;
+
+    --glass:rgba(255,255,255,0.05);
+
+    --shadow-orange:
+    0 0 20px rgba(255,106,0,.3),
+    0 0 60px rgba(255,106,0,.15);
+
+    --transition:.35s ease;
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+    Inter,
+    system-ui,
+    sans-serif;
+
+    background:var(--black);
+    color:white;
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+section{
+    padding:120px 8%;
+    position:relative;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+}
+
+h1,h2,h3,h4{
+    line-height:1.05;
+}
+
+h1{
+    font-size:clamp(3rem,7vw,7rem);
+    font-weight:900;
+}
+
+h2{
+    font-size:clamp(2.5rem,5vw,4rem);
+    font-weight:900;
+    margin-bottom:30px;
+}
+
+h3{
+    font-size:1.5rem;
+    font-weight:800;
+}
+
+p{
+    color:var(--gray);
+    line-height:1.8;
+}
+
+/* =====================================================
+   BACKGROUND EFFECTS
+===================================================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at 20% 20%,
+    rgba(255,106,0,.15),
+    transparent 35%),
+
+    radial-gradient(circle at 80% 60%,
+    rgba(255,140,0,.1),
+    transparent 40%);
+
+    pointer-events:none;
+    z-index:-1;
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:9999;
+
+    backdrop-filter:blur(18px);
+
+    background:
+    rgba(10,10,10,.65);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.06);
+}
+
+.nav{
+    max-width:1400px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 8%;
+}
+
+.logo{
+    width:220px;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    font-weight:700;
+    transition:var(--transition);
+}
+
+.nav-links a:hover{
+    color:var(--orange);
+}
+
+.btn-nav{
+    padding:14px 26px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+    135deg,
+    var(--orange),
+    var(--orange-light)
+    );
+
+    font-weight:800;
+
+    box-shadow:var(--shadow-orange);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,.75),
+    rgba(0,0,0,.85)
+    ),
+
+    url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2000");
+
+    background-size:cover;
+    background-position:center;
+    z-index:-2;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle,
+    transparent 40%,
+    rgba(0,0,0,.85));
+
+    z-index:-1;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero-logo{
+    width:420px;
+    margin-bottom:30px;
+
+    filter:
+    drop-shadow(0 0 20px rgba(255,106,0,.4));
+}
+
+.hero h1{
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:var(--orange);
+}
+
+.hero p{
+    font-size:1.2rem;
+    max-width:750px;
+    margin-bottom:40px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:18px 36px;
+    border-radius:999px;
+    font-weight:800;
+    transition:var(--transition);
+}
+
+.btn-primary{
+    background:
+    linear-gradient(
+    135deg,
+    var(--orange),
+    var(--orange-light)
+    );
+
+    box-shadow:var(--shadow-orange);
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.03);
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title{
+    text-align:center;
+    margin-bottom:80px;
+}
+
+.section-title span{
+    color:var(--orange);
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.grid-3{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    padding:35px;
+
+    border-radius:24px;
+
+    transition:var(--transition);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:rgba(255,106,0,.5);
+
+    box-shadow:var(--shadow-orange);
+}
+
+.card-icon{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+/* =====================================================
+   SERVICE SECTION
+===================================================== */
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.service-box{
+    background:linear-gradient(
+    180deg,
+    #1b1b1b,
+    #101010
+    );
+
+    border-left:4px solid var(--orange);
+
+    padding:35px;
+    border-radius:24px;
+}
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+.event-card{
+    overflow:hidden;
+}
+
+.event-date{
+    color:var(--orange);
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+/* =====================================================
+   SERMON
+===================================================== */
+
+.sermon-feature{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.video-box{
+    aspect-ratio:16/9;
+
+    border-radius:30px;
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.video-box iframe{
+    width:100%;
+    height:100%;
+}
+
+/* =====================================================
+   TESTIMONIALS
+===================================================== */
+
+.testimonial{
+    position:relative;
+}
+
+.testimonial::before{
+    content:"❝";
+    font-size:4rem;
+    color:var(--orange);
+    position:absolute;
+    top:10px;
+    right:25px;
+}
+
+/* =====================================================
+   DONATION
+===================================================== */
+
+.donate{
+    text-align:center;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(255,106,0,.18),
+    rgba(255,140,0,.08)
+    );
+
+    border-radius:40px;
+}
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+input,
+textarea{
+    background:#121212;
+    border:1px solid rgba(255,255,255,.08);
+
+    color:white;
+
+    padding:18px;
+
+    border-radius:15px;
+}
+
+textarea{
+    min-height:180px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:80px 8%;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-logo{
+    width:250px;
+    margin-bottom:20px;
+}
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:none;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .sermon-feature{
+        grid-template-columns:1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-logo{
+        width:280px;
+    }
+}
+
+</style>
 </head>
 <body>
-    <h1>Willkommen!</h1>
-    <p>Das ist meine kleine Website.</p>
 
-    <button onclick="alert('Hallo!')">Klick mich</button>
+<!-- ==========================================
+HEADER
+=========================================== -->
+
+<header>
+
+<div class="nav">
+
+<img src="logo.png" class="logo" alt="Immanuel Fellowship">
+
+<div class="nav-links">
+<a href="#about">Über Uns</a>
+<a href="#services">Gottesdienste</a>
+<a href="#events">Events</a>
+<a href="#ministries">Dienste</a>
+<a href="#contact">Kontakt</a>
+</div>
+
+<a href="#donate" class="btn-nav">Spenden</a>
+
+</div>
+
+</header>
+
+<!-- ==========================================
+HERO
+=========================================== -->
+
+<section class="hero">
+
+<div class="container hero-content">
+
+<img src="logo.png" class="hero-logo" alt="Immanuel Fellowship">
+
+<h1>
+ERWECKUNG.<br>
+<span>GEMEINSCHAFT.</span><br>
+SENDUNG.
+</h1>
+
+<p>
+Eine leidenschaftliche Bewegung von Menschen,
+die Jesus kompromisslos nachfolgen, ihre Stadt
+verändern und Gottes Gegenwart erleben wollen.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#services" class="btn btn-primary">
+Gottesdienst besuchen
+</a>
+
+<a href="#about" class="btn btn-secondary">
+Mehr erfahren
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+ABOUT
+=========================================== -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-title reveal">
+<h2>Unsere <span>Vision</span></h2>
+</div>
+
+<div class="grid-3">
+
+<div class="card reveal">
+<div class="card-icon">🔥</div>
+<h3>Erweckung</h3>
+<p>Menschen in die Gegenwart Gottes führen und geistliche Erneuerung freisetzen.</p>
+</div>
+
+<div class="card reveal">
+<div class="card-icon">🌍</div>
+<h3>Mission</h3>
+<p>Das Evangelium mutig leben und Hoffnung in unsere Gesellschaft tragen.</p>
+</div>
+
+<div class="card reveal">
+<div class="card-icon">🤝</div>
+<h3>Gemeinschaft</h3>
+<p>Eine Familie des Glaubens bauen, die Menschen stärkt und verbindet.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+SERVICES
+=========================================== -->
+
+<section id="services">
+
+<div class="container">
+
+<div class="section-title reveal">
+<h2>Unsere <span>Gottesdienste</span></h2>
+</div>
+
+<div class="service-grid">
+
+<div class="service-box reveal">
+<h3>Sonntag Celebration</h3>
+<p>10:00 Uhr</p>
+</div>
+
+<div class="service-box reveal">
+<h3>Prayer Night</h3>
+<p>Freitag • 19:30 Uhr</p>
+</div>
+
+<div class="service-box reveal">
+<h3>Standort</h3>
+<p>Musterstraße 1 · 12345 Musterstadt</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+EVENTS
+=========================================== -->
+
+<section id="events">
+
+<div class="container">
+
+<div class="section-title reveal">
+<h2>Nächste <span>Events</span></h2>
+</div>
+
+<div class="grid-3">
+
+<div class="card event-card reveal">
+<div class="event-date">12 JULI</div>
+<h3>Revival Night</h3>
+<p>Ein Abend voller Lobpreis, Gebet und Gottes Gegenwart.</p>
+</div>
+
+<div class="card event-card reveal">
+<div class="event-date">20 JULI</div>
+<h3>Leadership Training</h3>
+<p>Menschen befähigen, Einfluss mit Vision zu leben.</p>
+</div>
+
+<div class="card event-card reveal">
+<div class="event-date">28 JULI</div>
+<h3>Youth Conference</h3>
+<p>Junge Generation. Große Berufung. Starke Zukunft.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+SERMONS
+=========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title reveal">
+<h2>Aktuelle <span>Predigt</span></h2>
+</div>
+
+<div class="sermon-feature">
+
+<div class="video-box reveal">
+<iframe
+src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+allowfullscreen>
+</iframe>
+</div>
+
+<div class="reveal">
+<h3>Von Glauben zu Durchbruch</h3>
+<br>
+<p>
+Entdecke, wie Gott Menschen befähigt,
+Hindernisse zu überwinden und in ihre
+Berufung hineinzutreten.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+MINISTRIES
+=========================================== -->
+
+<section id="ministries">
+
+<div class="container">
+
+<div class="section-title reveal">
+<h2>Unsere <span>Dienste</span></h2>
+</div>
+
+<div class="grid-3">
+
+<div class="card reveal">
+<h3>Jugend</h3>
+<p>Leidenschaftliche junge Menschen, die Jesus nachfolgen.</p>
+</div>
+
+<div class="card reveal">
+<h3>Gebet</h3>
+<p>Gemeinsam Gottes Gegenwart suchen und erleben.</p>
+</div>
+
+<div class="card reveal">
+<h3>Lobpreis</h3>
+<p>Kreative Anbetung mit Exzellenz und Hingabe.</p>
+</div>
+
+<div class="card reveal">
+<h3>Kleingruppen</h3>
+<p>Gemeinschaft, Wachstum und echte Beziehungen.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+TESTIMONIALS
+=========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title reveal">
+<h2>Zeugnisse voller <span>Veränderung</span></h2>
+</div>
+
+<div class="grid-3">
+
+<div class="card testimonial reveal">
+<p>
+Mein Leben wurde komplett verändert.
+Ich habe Hoffnung, Freiheit und eine
+neue Perspektive gefunden.
+</p>
+</div>
+
+<div class="card testimonial reveal">
+<p>
+Hier habe ich echte Gemeinschaft erlebt
+und Gottes Wirken persönlich erfahren.
+</p>
+</div>
+
+<div class="card testimonial reveal">
+<p>
+Eine Kirche voller Leidenschaft,
+Vision und geistlicher Kraft.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+DONATE
+=========================================== -->
+
+<section id="donate">
+
+<div class="container">
+
+<div class="donate reveal">
+
+<h2>Gemeinsam <span style="color:#FF8C00">bauen</span></h2>
+
+<p style="max-width:700px;margin:20px auto 40px;">
+Deine Großzügigkeit ermöglicht Reichweite,
+Mission, Jüngerschaft und Veränderung.
+</p>
+
+<a href="#" class="btn btn-primary">
+Jetzt unterstützen
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+CONTACT
+=========================================== -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="section-title reveal">
+<h2>Kontakt <span>aufnehmen</span></h2>
+</div>
+
+<div class="contact-grid">
+
+<div class="reveal">
+
+<h3>Wir freuen uns auf dich</h3>
+<br>
+
+<p>
+info@immanuelfellowship.de
+<br><br>
++49 123 456789
+<br><br>
+Instagram • YouTube • Facebook
+</p>
+
+</div>
+
+<form class="reveal">
+
+<input type="text" placeholder="Name">
+
+<input type="email" placeholder="E-Mail">
+
+<textarea placeholder="Nachricht"></textarea>
+
+<button class="btn btn-primary">
+Nachricht senden
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+FOOTER
+=========================================== -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<img src="logo.png"
+class="footer-logo"
+alt="Immanuel Fellowship">
+
+<p>
+Eine Gemeinde voller Glauben,
+Leidenschaft und geistlicher Dynamik.
+</p>
+
+</div>
+
+<div>
+
+<h3>Navigation</h3>
+<br>
+<p>Über Uns</p>
+<p>Events</p>
+<p>Predigten</p>
+
+</div>
+
+<div>
+
+<h3>Rechtliches</h3>
+<br>
+<p>Impressum</p>
+<p>Datenschutz</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* ==========================================
+SCROLL REVEAL
+========================================== */
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+const observer =
+new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("active");
+}
+
+});
+
+},{
+threshold:0.15
+});
+
+reveals.forEach(el=>{
+observer.observe(el);
+});
+
+/* ==========================================
+PARALLAX HERO
+========================================== */
+
+window.addEventListener("scroll",()=>{
+
+const hero =
+document.querySelector(".hero");
+
+hero.style.backgroundPositionY =
+window.scrollY * 0.4 + "px";
+
+});
+
+</script>
+
 </body>
 </html>
